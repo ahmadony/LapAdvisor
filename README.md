@@ -16,8 +16,6 @@ A full-stack, web-based **laptop recommendation and e-commerce platform** that h
 - [Project Structure](#-project-structure)
 - [Getting Started](#-getting-started)
 - [Database Setup](#-database-setup)
-- [Screenshots](#-screenshots)
-- [Team](#-team)
 
 ---
 
@@ -269,18 +267,6 @@ dotnet ef database update --startup-project ../LapAdvisor/LapAdvisor.csproj
 
 > ⚠️ **Important:** Make sure the connection string in `appsettings.json` is updated to point to your local SQL Server before running migrations.
 
----
-
-## 👨‍💻 Team
-
-| Name | University ID |
-|---|---|
-| Ahmad Mahmoud Mustafa Alsmadi | 3220601058 |
-| Mohammad Khalaf Mohammad Aldabube | 3220601054 |
-| Ahmad Salameh Mohammad Alhabahbeh | 3220605114 |
-
-**University:** World Islamic Sciences and Education University (WISE)  
-**Faculty:** Information Technology  
 
 ---
 
