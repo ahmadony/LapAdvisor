@@ -1,0 +1,15 @@
+﻿@model TbPages
+
+<section class="section-b-space">
+    <div class="container">
+
+        <h1 class="fw-bold text-center mb-4">@Model.Title</h1>
+
+        <div class="card shadow p-4">
+            <div class="terms-content" style="font-size:18px; line-height:2;">
+                @Html.Raw(Model.Description)
+            </div>
+        </div>
+
+    </div>
+</section>

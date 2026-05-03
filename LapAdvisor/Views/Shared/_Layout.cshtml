@@ -1,0 +1,782 @@
+﻿
+@inject SignInManager<ApplicationUser> signInManager
+<!DOCTYPE html>
+@* @ViewBag.Title *@
+<html lang="en">
+<head>
+    <meta name="viewport" content="width=device-width" />
+    <title>LapAdvisor</title>
+    <link rel="icon" href="~/Frontend/images/favicon/1.png" type="image/x-icon">
+    <link rel="shortcut icon" href="~/Frontend/images/favicon/1.png" type="image/x-icon">
+    <title>LapAdvisor - Multi-purpopse E-commerce Html Template</title>
+
+    <!--Google font-->
+    <link href="https://fonts.googleapis.com/css?family=Lato:300,400,700,900" rel="stylesheet">
+
+    <!-- Icons -->
+    <link rel="stylesheet" type="text/css" href="~/Frontend/css/fontawesome.css">
+
+    <!--Slick slider css-->
+    <link rel="stylesheet" type="text/css" href="~/Frontend/css/slick.css">
+    <link rel="stylesheet" type="text/css" href="~/Frontend/css/slick-theme.css">
+
+    <!-- Animate icon -->
+    <link rel="stylesheet" type="text/css" href="~/Frontend/css/animate.css">
+
+    <!-- Themify icon -->
+    <link rel="stylesheet" type="text/css" href="~/Frontend/css/themify-icons.css">
+
+    <!--Wishlist css-->
+    <link rel="stylesheet" href="~/Frontend/css/wishlist.css" />
+
+    <!--Lapadvisor logo css-->
+    <link rel="stylesheet" href="~/Frontend/css/LapadvisorLogo.css" />
+
+    <!-- Bootstrap css -->
+    <link rel="stylesheet" type="text/css" href="~/Frontend/css/bootstrap.css">
+
+    <!-- Theme css -->
+    <link rel="stylesheet" type="text/css" href="~/Frontend/css/color19.css" media="screen" id="color">
+
+    @RenderSection("Styles", required: false);
+</head>
+<body>
+    <!-- loader start -->
+    <div class="loader_skeleton">
+        <header class="header-tools marketplace">
+            <div class="top-header d-none d-sm-block">
+                <div class="container-fluid custom-container">
+                    <div class="row">
+                        <div class="col-lg-6">
+                            <div class="header-contact">
+                                <ul>
+                                    <li>Welcome to Our store LapAdvisor</li>
+                                    <li><i class="fa fa-phone" aria-hidden="true"></i>Call Us: 777 - 144 - 399</li>
+                                </ul>
+                            </div>
+                        </div>
+						<div class="col-lg-6 text-right">
+							<ul class="header-dropdown">
+								<!-- Wishlist -->
+								<li class="mobile-wishlist">
+									<a asp-controller="Wishlist" asp-action="Index">
+										<i class="fa fa-heart" aria-hidden="true"></i>
+									</a>
+								</li>
+
+								<!-- Compare -->
+								<li class="mobile-compare position-relative">
+									<a asp-controller="Compare" asp-action="Index">
+										<i class="fa fa-balance-scale" aria-hidden="true"></i>
+										<span id="compareCount"
+											  class="badge bg-dark"
+											  style="
+                                                    position:absolute;
+                                                    top:-6px;
+                                                    right:-6px;
+                                                    font-size:10px;
+">
+											0
+										</span>
+									</a>
+								</li>
+
+								<!-- Account -->
+								<li class="onhover-dropdown mobile-account">
+									<i class="fa fa-user" aria-hidden="true"></i>
+									My Account
+								</li>
+
+							</ul>
+						</div>
+
+                    </div>
+                </div>
+            </div>
+            <div class="container-fluid custom-container">
+                <div class="row">
+                    <div class="col-sm-12">
+                        <div class="main-menu">
+                            <div class="menu-left">
+                                <div class="navbar">
+                                    <a href="javascript:void(0)" onclick="openNav()">
+                                        <div class="bar-style">
+                                            <i class="fa fa-bars sidebar-bar" aria-hidden="true"></i>
+                                        </div>
+                                    </a>
+                                </div>
+                                <div class="brand-logo">
+                                    <a href="Index.html">
+                                        <img src="~/Frontend/images/icon/logo/18.png"
+                                             class="img-fluid" alt="logo">
+                                    </a>
+                                </div>
+                            </div>
+                            <div class="menu-right pull-right">
+                                <div>
+                                    <nav>
+                                        <div class="toggle-nav"><i class="fa fa-bars sidebar-bar"></i></div>
+                                        <ul class="sm pixelstrap sm-horizontal">
+                                            <li>
+                                                <div class="mobile-back text-right">
+                                                    Back<i class="fa fa-angle-right pl-2"
+                                                           aria-hidden="true"></i>
+                                                </div>
+                                            </li>
+                                            <li>
+                                                <a href="/Home/Index">Home</a>
+                                            </li>
+                                            <li>
+                                                <a href="/Items/ItemList">products</a>
+                                            </li>
+                                            <li>
+                                                <a href="">Recommendation</a>
+                                            </li>
+                                            <li class="mega">
+                                                <a href="#">
+                                                    About Us
+                                                </a>
+                                            </li>
+                                            <li>
+                                                <a href="#">Terms Of Use</a>
+                                            </li>
+                                            <li>
+                                                <a href="#">Contact Us</a>
+                                            </li>
+                                        </ul>
+                                    </nav>
+                                </div>
+                                <div>
+                                    <div class="icon-nav d-none d-sm-block">
+                                        <ul>
+                                            <li class="onhover-div mobile-cart">
+                                                <div>
+                                                    <a href="/Order/Cart">
+                                                        <img src="~/Frontend/images/icon/cart.png" class="img-fluid blur-up lazyloaded" alt="">
+                                                        </a>
+                                                    <i class="ti-shopping-cart"></i>
+                                                </div>
+                                            </li>
+                                        </ul>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </header>
+        <div class="home-slider">
+            <div class="home"></div>
+        </div>
+        <section class="collection-banner banner-padding banner-furniture ">
+            <div class="container-fluid">
+                <div class="row partition4">
+                    <div class="col-lg-3 col-md-6">
+                        <div class="ldr-bg">
+                            <div class="contain-banner banner-4">
+                                <div>
+                                    <h4></h4>
+                                    <h2></h2>
+                                    <h6></h6>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-lg-3 col-md-6">
+                        <div class="ldr-bg">
+                            <div class="contain-banner banner-4">
+                                <div>
+                                    <h4></h4>
+                                    <h2></h2>
+                                    <h6></h6>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-lg-3 col-md-6">
+                        <div class="ldr-bg">
+                            <div class="contain-banner banner-4">
+                                <div>
+                                    <h4></h4>
+                                    <h2></h2>
+                                    <h6></h6>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-lg-3 col-md-6">
+                        <div class="ldr-bg">
+                            <div class="contain-banner banner-4">
+                                <div>
+                                    <h4></h4>
+                                    <h2></h2>
+                                    <h6></h6>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+        <div class="container section-b-space">
+            <div class="row section-t-space">
+                <div class="col-lg-6 offset-lg-3">
+                    <div class="product-para">
+                        <p class="first"></p>
+                        <p class="second"></p>
+                    </div>
+                </div>
+                <div class="col-12">
+                    <div class=" grid-products center-detail row">
+                        <div class="col-xl-2 col-lg-3 col-sm-4 col-6 product-box">
+                            <div class="img-wrapper"></div>
+                            <div class="product-detail">
+                                <h4></h4>
+                                <h5></h5>
+                                <h5 class="second"></h5>
+                            </div>
+                        </div>
+                        <div class="col-xl-2 col-lg-3 col-sm-4 col-6 product-box">
+                            <div class="img-wrapper"></div>
+                            <div class="product-detail">
+                                <h4></h4>
+                                <h5></h5>
+                                <h5 class="second"></h5>
+                            </div>
+                        </div>
+                        <div class="col-xl-2 col-lg-3 col-sm-4 col-6 product-box">
+                            <div class="img-wrapper"></div>
+                            <div class="product-detail">
+                                <h4></h4>
+                                <h5></h5>
+                                <h5 class="second"></h5>
+                            </div>
+                        </div>
+                        <div class="col-xl-2 col-lg-3 col-sm-4 col-6 product-box">
+                            <div class="img-wrapper"></div>
+                            <div class="product-detail">
+                                <h4></h4>
+                                <h5></h5>
+                                <h5 class="second"></h5>
+                            </div>
+                        </div>
+                        <div class="col-xl-2 col-lg-3 col-sm-4 col-6 product-box">
+                            <div class="img-wrapper"></div>
+                            <div class="product-detail">
+                                <h4></h4>
+                                <h5></h5>
+                                <h5 class="second"></h5>
+                            </div>
+                        </div>
+                        <div class="col-xl-2 col-lg-3 col-sm-4 col-6 product-box">
+                            <div class="img-wrapper"></div>
+                            <div class="product-detail">
+                                <h4></h4>
+                                <h5></h5>
+                                <h5 class="second"></h5>
+                            </div>
+                        </div>
+                        <div class="col-xl-2 col-lg-3 col-sm-4 col-6 product-box">
+                            <div class="img-wrapper"></div>
+                            <div class="product-detail">
+                                <h4></h4>
+                                <h5></h5>
+                                <h5 class="second"></h5>
+                            </div>
+                        </div>
+                        <div class="col-xl-2 col-lg-3 col-sm-4 col-6 product-box">
+                            <div class="img-wrapper"></div>
+                            <div class="product-detail">
+                                <h4></h4>
+                                <h5></h5>
+                                <h5 class="second"></h5>
+                            </div>
+                        </div>
+                        <div class="col-xl-2 col-lg-3 col-sm-4 col-6 product-box">
+                            <div class="img-wrapper"></div>
+                            <div class="product-detail">
+                                <h4></h4>
+                                <h5></h5>
+                                <h5 class="second"></h5>
+                            </div>
+                        </div>
+                        <div class="col-xl-2 col-lg-3 col-sm-4 col-6 product-box">
+                            <div class="img-wrapper"></div>
+                            <div class="product-detail">
+                                <h4></h4>
+                                <h5></h5>
+                                <h5 class="second"></h5>
+                            </div>
+                        </div>
+                        <div class="col-xl-2 col-lg-3 col-sm-4 col-6 product-box">
+                            <div class="img-wrapper"></div>
+                            <div class="product-detail">
+                                <h4></h4>
+                                <h5></h5>
+                                <h5 class="second"></h5>
+                            </div>
+                        </div>
+                        <div class="col-xl-2 col-lg-3 col-sm-4 col-6 product-box">
+                            <div class="img-wrapper"></div>
+                            <div class="product-detail">
+                                <h4></h4>
+                                <h5></h5>
+                                <h5 class="second"></h5>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!-- loader end -->
+    <!-- header start -->
+    <header class="header-tools marketplace">
+        <div class="mobile-fix-option"></div>
+        <div class="top-header">
+            <div class="container-fluid custom-container">
+                <div class="row">
+                    <div class="col-lg-6">
+                        <div class="header-contact">
+                            <ul>
+                                <li>Welcome to Our store LapAdvisor</li>
+                                <li><i class="fa fa-phone" aria-hidden="true"></i>Call Us: 777 - 144 - 399</li>
+                            </ul>
+                        </div>
+                    </div>
+                    <div class="col-lg-6 text-right">
+                        <ul class="header-dropdown">
+
+                            <!-- Wishlist -->
+                            <li class="mobile-wishlist">
+                                <a asp-controller="Wishlist" asp-action="Index">
+                                    <i class="fa fa-heart" aria-hidden="true"></i>
+                                </a>
+                            </li>
+
+                            <!-- Compare -->
+                            <li class="mobile-compare position-relative">
+                                <a asp-controller="Compare" asp-action="Index">
+                                    <i class="fa fa-balance-scale" aria-hidden="true"></i>
+                                    <span id="compareCount"
+                                          class="badge bg-dark"
+                                          style="position:absolute; top:-6px; right:-6px; font-size:10px;">
+                                        0
+                                    </span>
+                                </a>
+                            </li>
+
+                            <!-- Account -->
+                            <li class="onhover-dropdown mobile-account">
+                                <i class="fa fa-user" aria-hidden="true"></i>
+                                My Account
+
+                                <ul class="onhover-show-div">
+
+                                    @if (User.IsInRole("Admin"))
+                                    {
+                                        <li>
+                                            <a asp-area="Admin"
+                                               asp-controller="Home"
+                                               asp-action="Index"
+                                               target="_blank">
+                                                Admin Panel
+                                            </a>
+                                        </li>
+                                    }
+
+                                    @if (signInManager.IsSignedIn(User))
+                                    {
+                                        <li>
+                                            <a asp-controller="Order" asp-action="MyOrders">
+                                                My Orders
+                                            </a>
+                                        </li>
+                                        <li>
+                                            <a asp-controller="Users" asp-action="LoginOut">
+                                                Logout
+                                            </a>
+                                        </li>
+                                    }
+                                    else
+                                    {
+                                        <li>
+                                            <a asp-controller="Users" asp-action="Login">
+                                                Login
+                                            </a>
+                                        </li>
+                                    }
+
+                                </ul>
+                            </li>
+
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="container-fluid custom-container">
+            <div class="row">
+                <div class="col-sm-12">
+                    <div class="main-menu">
+                        <div class="menu-left">
+                            <div class="navbar">
+                                <a href="javascript:void(0)" onclick="openNav()">
+                                    <div class="bar-style">
+                                        <i class="fa fa-bars sidebar-bar" aria-hidden="true"></i>
+                                    </div>
+                                </a>
+                                <div id="mySidenav" class="sidenav">
+                                    <a href="javascript:void(0)" class="sidebar-overlay" onclick="closeNav()"></a>
+                                    <nav>
+                                        <div onclick="closeNav()">
+                                            <div class="sidebar-back text-left">
+                                                <i class="fa fa-angle-left pr-2"
+                                                   aria-hidden="true"></i> Back
+                                            </div>
+                                        </div>
+                                        <ul id="sub-menu" class="sm pixelstrap sm-vertical">
+                                            <li>
+                                                <a href="/Home/Index">Home</a>
+                                            </li>
+                                            <li>
+                                                <a href="/Items/ItemList">Products</a>
+                                            </li>
+                                            <li>
+                                                <a asp-controller="Recommendation" asp-action="Index">Recommendation</a>
+                                            </li>
+                                            <li>
+                                                <a asp-controller="Pages" asp-action="page" asp-route-pageId="3">About Us</a>
+                                            </li>
+                                            <li>
+                                                <a asp-controller="Pages" asp-action="page" asp-route-pageId="6">Terms Of Use</a>
+                                            </li>
+                                            <li>
+                                                <a asp-controller="Pages" asp-action="page" asp-route-pageId="11">Contact Us</a>
+                                            </li>
+                                        </ul>
+                                    </nav>
+                                </div>
+                            </div>
+                            <div class="brand-logo">
+                                <a href="/Home/Index">
+                                    <img src="~/Frontend/images/icon/logo/18.png"
+                                         class="img-fluid" alt="logo">
+                                </a>
+                            </div>
+                        </div>
+                        <div class="menu-right pull-right">
+                            <div>
+                                <nav id="main-nav">
+                                    <div class="toggle-nav"><i class="fa fa-bars sidebar-bar"></i></div>
+                                    <ul id="main-menu" class="sm pixelstrap sm-horizontal">
+                                        <li>
+                                            <div class="mobile-back text-right">
+                                                Back<i class="fa fa-angle-right pl-2"
+                                                       aria-hidden="true"></i>
+                                            </div>
+                                        </li>
+                                        <li>
+                                            <a href="/Home/Index">Home</a>
+                                        </li>
+                                        <li>
+                                            <a href="/Items/ItemList">products</a>
+                                        </li>
+                                        <li>
+                                            <a asp-controller="Recommendation" asp-action="Index">Recommendation</a>
+                                        </li>
+                                        <li class="mega" id="hover-cls">
+                                            <a asp-controller="Pages" asp-action="page" asp-route-pageId="3">
+                                                About Us
+                                            </a>
+                                        </li>
+                                        <li>
+                                            <a asp-controller="Pages" asp-action="page" asp-route-pageId="6">Terms Of Use</a>
+                                        </li>
+                                        <li>
+                                            <a asp-controller="Pages" asp-action="page" asp-route-pageId="11">Contact Us</a>
+                                        </li>
+                                    </ul>
+                                </nav>
+                            </div>
+                            <div>
+                                <div class="icon-nav d-none d-sm-block">
+                                    <ul>
+                                        <li class="onhover-div mobile-cart">
+                                            <div>
+                                                <a href="/Order/Cart">
+                                                    <img src="~/Frontend/images/icon/cart.png" class="img-fluid blur-up lazyloaded" alt="">
+                                                </a>
+                                                <i class="ti-shopping-cart"></i>
+                                            </div>
+                                        </li>
+                                    </ul>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </header>
+    
+    @RenderBody()
+
+    <!-- footer -->
+    <footer class="footer-light">
+        <div class="light-layout">
+            <div class="container">
+            </div>
+        </div>
+        <section class="section-b-space light-layout">
+            <div class="container">
+                <div class="row footer-theme partition-f">
+                    <div class="col-lg-4 col-md-6">
+                        <div class="footer-title footer-mobile-title">
+                            <h4>about</h4>
+                        </div>
+                        <div class="footer-contant">
+                            <div class="footer-logo"><img src="~/Frontend/images/icon/logo/18.png" alt="logo"></div>
+                            <p>
+                                LapAdvisor is your trusted destination for finding the perfect laptop. We simplify your search
+                                by offering smart recommendations, accurate comparisons, and reliable information to help you
+                                choose the device that fits your needs.
+                            </p>
+                            <div class="footer-social">
+                                <ul>
+                                    <li><a href="https://facebook.com" target="_blank"><i class="fa fa-facebook" aria-hidden="true"></i></a></li>
+                                    <li><a href="https://www.google.com" target="_blank"><i class="fa fa-google-plus" aria-hidden="true"></i></a></li>
+                                    <li><a href="https://twitter.com" target="_blank"><i class="fa fa-twitter" aria-hidden="true"></i></a></li>
+                                    <li><a href="https://instagram.com" target="_blank"><i class="fa fa-instagram" aria-hidden="true"></i></a></li>
+                                </ul>
+
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col text-center">
+                        <div class="sub-title">
+                            <div class="footer-title">
+                                <h4>STORE INFORMATION</h4>
+                            </div>
+
+                            <div class="footer-contant">
+                                <ul class="contact-list" style="list-style:none; padding:0; display:inline-block; text-align:left;">
+                                    <li style="margin-bottom:8px;">
+                                        <i class="fa fa-map-marker"></i>
+                                        LapAdvisor Jordan Store
+                                    </li>
+
+                                    <li style="margin-bottom:8px;">
+                                        <i class="fa fa-phone"></i>
+                                        Call Us: 777-144-399
+                                    </li>
+
+                                    <li style="margin-bottom:8px;">
+                                        <i class="fa fa-envelope-o"></i>
+                                        Email Us:
+                                        <a href="mailto:LapAdvisor@gmail.com">
+                                            LapAdvisor@gmail.com
+                                        </a>
+                                    </li>
+                                </ul>
+                            </div>
+                        </div>
+                    </div>
+
+
+                </div>
+            </div>
+        </section>
+        <div class="sub-footer">
+            <div class="container">
+                <div class="row">
+                    <div class="col-xl-6 col-md-6 col-sm-12">
+                        <div class="footer-end">
+                            <p>
+                                <i class="fa fa-copyright"></i> 2025 LapAdvisor. All Rights Reserved.
+                            </p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </footer>
+    <!-- footer end -->
+    <!--modal popup start-->
+    <div class="modal fade bd-example-modal-lg theme-modal" id="exampleModal" tabindex="-1" role="dialog"
+         aria-hidden="true">
+        <div class="modal-dialog modal-lg modal-dialog-centered" role="document">
+            <div class="modal-content">
+                <div class="modal-body modal1">
+                    <div class="container-fluid p-0">
+                        <div class="row">
+                            <div class="col-12">
+                                <div class="modal-bg">
+                                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                                        <span aria-hidden="true">&times;</span>
+                                    </button>
+                                    <div class="offer-content">
+                                        <img src="~/Frontend/images/Offer-banner.png"
+                                             class="img-fluid blur-up lazyload" alt="">
+                                        <h2>newsletter</h2>
+                                        <form action="https://pixelstrap.us19.list-manage.com/subscribe/post?u=5a128856334b598b395f1fc9b&amp;id=082f74cbda"
+                                              class="auth-form needs-validation" method="post"
+                                              id="mc-embedded-subscribe-form" name="mc-embedded-subscribe-form"
+                                              target="_blank">
+                                            <div class="form-group mx-sm-3">
+                                                <input type="email" class="form-control" name="EMAIL" id="mce-EMAIL"
+                                                       placeholder="Enter your email" required="required">
+                                                <button type="submit" class="btn btn-solid"
+                                                        id="mc-submit">
+                                                    subscribe
+                                                </button>
+                                            </div>
+                                        </form>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!--modal popup end-->
+    <!-- Quick-view modal popup start-->
+    <div class="modal fade bd-example-modal-lg theme-modal" id="quick-view" tabindex="-1" role="dialog"
+         aria-hidden="true">
+        <div class="modal-dialog modal-lg modal-dialog-centered" role="document">
+            <div class="modal-content quick-view-modal">
+                <div class="modal-body">
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                        <span aria-hidden="true">&times;</span>
+                    </button>
+                    <div class="row">
+                        <div class="col-lg-6 col-xs-12">
+                            <div class="quick-view-img">
+                                <img src="~/Frontend/images/pro3/1.jpg" alt=""
+                                     class="img-fluid blur-up lazyload">
+                            </div>
+                        </div>
+                        <div class="col-lg-6 rtl-text">
+                            <div class="product-right">
+                                <h2>Women Pink Shirt</h2>
+                                <h3>$32.96</h3>
+                                <ul class="color-variant">
+                                    <li class="bg-light0"></li>
+                                    <li class="bg-light1"></li>
+                                    <li class="bg-light2"></li>
+                                </ul>
+                                <div class="border-product">
+                                    <h6 class="product-title">product details</h6>
+                                    <p>
+                                        Sed ut perspiciatis, unde omnis iste natus error sit voluptatem accusantium
+                                        doloremque laudantium
+                                    </p>
+                                </div>
+                                <div class="product-description border-product">
+                                    <div class="size-box">
+                                        <ul>
+                                            <li class="active"><a href="#">s</a></li>
+                                            <li><a href="#">m</a></li>
+                                            <li><a href="#">l</a></li>
+                                            <li><a href="#">xl</a></li>
+                                        </ul>
+                                    </div>
+                                    <h6 class="product-title">quantity</h6>
+                                    <div class="qty-box">
+                                        <div class="input-group">
+                                            <span class="input-group-prepend">
+                                                <button type="button"
+                                                        class="btn quantity-left-minus" data-type="minus" data-field="">
+                                                    <i class="ti-angle-left"></i>
+                                                </button>
+                                            </span>
+                                            <input type="text" name="quantity" class="form-control input-number"
+                                                   value="1"> <span class="input-group-prepend">
+                                                <button type="button"
+                                                        class="btn quantity-right-plus" data-type="plus" data-field="">
+                                                    <i class="ti-angle-right"></i>
+                                                </button>
+                                            </span>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="product-buttons">
+                                    <a href="#" class="btn btn-solid">add to cart</a> <a href="#" class="btn btn-solid">view detail</a>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!-- Quick-view modal popup end-->
+    <!-- theme setting -->
+    <!-- Dark Mode Toggle -->
+    <a href="javascript:void(0)" onclick="toggleDarkMode()">
+        <div class="setting-sidebar" id="setting-icon">
+            <div>
+                <i class="fa fa-moon-o" aria-hidden="true"></i>
+            </div>
+        </div>
+    </a>
+
+    <!-- theme setting -->
+    <!-- tap to top -->
+    <div class="tap-top top-cls">
+        <div>
+            <i class="fa fa-angle-double-up"></i>
+        </div>
+    </div>
+    <!-- tap to top end -->
+    <!-- latest jquery-->
+    <script src="~/Frontend/js/jquery-3.3.1.min.js"></script>
+
+    <!-- fly cart ui jquery-->
+    <script src="~/Frontend/js/jquery-ui.min.js"></script>
+
+    <!-- exitintent jquery-->
+    <script src="~/Frontend/js/jquery.exitintent.js"></script>
+    <script src="~/Frontend/js/exit.js"></script>
+
+    <!-- popper js-->
+    <script src="~/Frontend/js/popper.min.js"></script>
+
+    <!-- slick js-->
+    <script src="~/Frontend/js/slick.js"></script>
+
+    <!-- menu js-->
+    <script src="~/Frontend/js/menu.js"></script>
+
+    <!-- lazyload js-->
+    <script src="~/Frontend/js/lazysizes.min.js"></script>
+
+    <!-- Bootstrap js-->
+    <script src="~/Frontend/js/bootstrap.js"></script>
+
+    <!-- Bootstrap Notification js-->
+    <script src="~/Frontend/js/bootstrap-notify.min.js"></script>
+
+    <!-- Fly cart js-->
+    <script src="~/Frontend/js/fly-cart.js"></script>
+
+    <!-- Theme js-->
+    <script src="~/Frontend/js/script.js"></script>
+
+    <!--wishlist js-->
+    <script src="~/Frontend/js/wishlist.js"></script>
+
+    <!--compare js-->
+    <script src="~/Frontend/js/comapre.js"></script>
+
+    <!--dark theme js-->
+    <script src="~/Frontend/js/darktheme.js"></script>
+
+    @RenderSection("Scripts", required: false);
+
+</body>
+</html>
+

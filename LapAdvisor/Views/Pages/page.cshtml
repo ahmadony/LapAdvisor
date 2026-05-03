@@ -1,0 +1,21 @@
+﻿@model TbPages
+
+@if (Model.PageId == 3) // About
+{
+    <partial name="AboutDesign" model="Model" />
+}
+else if (Model.PageId == 6) // Terms
+{
+    <partial name="TermsDesign" model="Model" />
+}
+else if (Model.PageId == 11) // Contact
+{
+    <partial name="ContactDesign" model="Model" />
+}
+else
+{
+    <div class="container mt-5">
+        <h2>@Model.Title</h2>
+        <p>@Html.Raw(Model.Description)</p>
+    </div>
+}

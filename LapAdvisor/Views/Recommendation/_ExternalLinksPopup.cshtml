@@ -1,0 +1,31 @@
+﻿@model LapAdvisor.Model.ExternalLinksVm
+
+<div class="ext-overlay"></div>
+
+<div class="ext-popup">
+    <div class="ext-header">
+        <h5>@Model.ItemName</h5>
+        <button type="button" class="ext-close">×</button>
+    </div>
+
+    <div class="ext-body">
+        @foreach (var s in Model.Stores)
+        {
+            <div class="ext-row">
+                <div>
+                    <div class="ext-store">@s.StoreName</div>
+                    <div class="ext-price">Approx: JD @s.ApproxPrice</div>
+                </div>
+
+                <a class="btn btn-sm btn-solid" href="@s.Url" target="_blank">
+                    View
+                </a>
+            </div>
+        }
+    </div>
+</div>
+
+<!--ExternalLinksPopUp.css-->
+
+<link rel="stylesheet" href="~/Frontend/css/LinksPopup.css" />
+

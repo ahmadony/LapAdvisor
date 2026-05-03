@@ -1,0 +1,52 @@
+﻿@{
+    ViewData["Title"] = "Order Success";
+}
+
+<section class="order-success section-b-space">
+    <div class="container">
+        <div class="row justify-content-center">
+            <div class="col-lg-6 col-md-8 text-center">
+
+                <div class="card shadow-lg border-0 p-5">
+
+                    <!-- Success Icon -->
+                    <div class="mb-4">
+                        <i class="fa fa-check-circle text-success" style="font-size:70px;"></i>
+                    </div>
+
+                    <!-- Title -->
+                    <h2 class="mb-3 fw-bold">
+                        Order Placed Successfully 🎉
+                    </h2>
+
+                    <p class="text-muted mb-4">
+                        Thank you for your purchase! Your order has been received and is being processed.
+                    </p>
+
+                    <!-- Order Number -->
+                    <div class="alert alert-success fw-bold fs-5">
+                        Order Number: <span class="text-dark">#@ViewBag.InvoiceId</span>
+                    </div>
+
+                    <!-- Buttons -->
+                    <div class="d-flex justify-content-center gap-3 mt-4">
+                        <a asp-controller="Order"
+                           asp-action="MyOrders"
+                           class="btn btn-solid">
+                            View My Orders
+                        </a>
+
+                        <a asp-controller="Home"
+                           asp-action="Index"
+                           class="btn btn-outline-secondary">
+                            Continue Shopping
+                        </a>
+                    </div>
+
+                </div>
+
+            </div>
+        </div>
+    </div>
+</section>
+

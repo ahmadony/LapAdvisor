@@ -1,0 +1,73 @@
+﻿@model TbPages
+
+<section class="section-b-space contact-section">
+    <div class="container">
+
+        <h1 class="fw-bold text-center mb-3">@Model.Title</h1>
+        <p class="text-center text-muted mb-5" style="font-size:18px;">
+            @Html.Raw(Model.Description)
+        </p>
+
+        <div class="row">
+
+            <!-- INFO PANEL -->
+            <div class="col-lg-5">
+                <div class="shadow p-4 rounded mb-4">
+                    <h4 class="fw-bold mb-3">Get in Touch</h4>
+
+                    <p><i class="fa fa-envelope text-primary"></i> support@lapadvisor.com</p>
+                    <p><i class="fa fa-phone text-primary"></i> +962 7X XXX XXXX</p>
+                    <p><i class="fa fa-map-marker text-primary"></i> Amman, Jordan</p>
+                </div>
+            </div>
+
+            <!-- FORM -->
+            <div class="col-lg-7">
+                <div class="shadow p-4 rounded">
+                    <h4 class="fw-bold mb-3">Send a Message</h4>
+                    
+                    @if (TempData["Success"] != null)
+                    {
+                        <div class="alert alert-success">
+                            @TempData["Success"]
+                        </div>
+                    }
+
+                    @if (TempData["Error"] != null)
+                    {
+                        <div class="alert alert-danger">
+                            @TempData["Error"]
+                        </div>
+                    }
+
+                    <form asp-controller="Contact"
+                          asp-action="SendMessage"
+                          method="post">
+
+                        <div class="mb-3">
+                            <label>Your Name</label>
+                            <input name="Name" class="form-control" required />
+                        </div>
+
+                        <div class="mb-3">
+                            <label>Your Email</label>
+                            <input name="Email" type="email" class="form-control" required />
+                        </div>
+
+                        <div class="mb-3">
+                            <label>Message</label>
+                            <textarea name="Message" class="form-control" rows="4" required></textarea>
+                        </div>
+
+                        <button type="submit" class="btn btn-solid w-100">
+                            Send Message
+                        </button>
+                    </form>
+
+                </div>
+            </div>
+
+        </div>
+
+    </div>
+</section>

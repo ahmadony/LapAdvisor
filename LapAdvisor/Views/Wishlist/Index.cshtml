@@ -1,0 +1,86 @@
+﻿@model List<VwItem>
+
+@{
+    ViewData["Title"] = "My Wishlist";
+}
+
+<section class="wishlist-section section-b-space">
+    <div class="container">
+
+        <!-- Title -->
+        <div class="row">
+            <div class="col-12">
+                <h2 class="mb-4 text-center">My Wishlist ❤️</h2>
+            </div>
+        </div>
+
+        <!-- Empty Wishlist -->
+        @if (Model == null || !Model.Any())
+        {
+            <div class="row">
+                <div class="col-12">
+                    <div class="alert alert-info text-center">
+                        Your wishlist is empty.
+                    </div>
+                </div>
+            </div>
+        }
+        else
+        {
+            <!-- Wishlist Items -->
+            <div class="row">
+                @foreach (var item in Model)
+                {
+                    <div class="col-xl-3 col-md-4 col-6 wishlist-card">
+                        <div class="product-box">
+
+                            <!-- Image -->
+                            <div class="img-wrapper">
+                                <a asp-controller="Items"
+                                   asp-action="ItemDetails"
+                                   asp-route-id="@item.ItemId">
+                                    <img src="~/Uploads/Items/@item.ImageName"
+                                         class="img-fluid"
+                                         alt="@item.ItemName">
+                                </a>
+                            </div>
+
+                            <!-- Details -->
+                            <div class="product-detail text-center">
+
+                                <a asp-controller="Items"
+                                   asp-action="ItemDetails"
+                                   asp-route-id="@item.ItemId">
+                                    <h6>@item.ItemName</h6>
+                                </a>
+
+                                <h4>JD @item.SalesPrice</h4>
+
+                                <!-- Actions -->
+                                <div class="mt-2 d-flex justify-content-center gap-2">
+
+                                    <!-- Add to Cart -->
+                                    <a asp-controller="Order"
+                                       asp-action="AddToCart"
+                                       asp-route-itemId="@item.ItemId"
+                                       class="btn btn-solid btn-sm">
+                                        Add to Cart
+                                    </a>
+
+                                    <!-- Remove from Wishlist -->
+                                    <button type="button"
+                                            class="btn btn-danger btn-sm js-remove-wishlist"
+                                            data-itemid="@item.ItemId">
+                                        Remove
+                                    </button>
+
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                }
+            </div>
+        }
+
+    </div>
+</section>

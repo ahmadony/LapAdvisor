@@ -1,0 +1,89 @@
+﻿@{
+    ViewData["Title"] = "Recommendation";
+}
+
+<div class="container">
+    <div class="row">
+        <div class="col-12">
+            <h2 class="mb-3">Find Your Perfect Laptop</h2>
+            <p class="text-muted">
+                Laptops are ranked using a smart scoring system based on your preferences to highlight the best match for you.
+            </p>
+            <div class="card p-3 mb-4">
+                <div class="row">
+                    <div class="col-md-3 mb-2">
+                        <label>Purpose</label>
+                        <select id="recPurpose" class="form-control">
+                            <option value="">Select...</option>
+                            <option value="gaming">Gaming</option>
+                            <option value="programming">Programming</option>
+                            <option value="university">University</option>
+                            <option value="business">Business</option>
+                            <option value="design">Design</option>
+                        </select>
+                    </div>
+
+                    <div class="col-md-3 mb-2">
+                        <label>Budget</label>
+                        <select id="recBudget" class="form-control">
+                            <option value="">Select...</option>
+                            <option value="0-400">0 - 400 JD</option>
+                            <option value="400-600">400 - 600 JD</option>
+                            <option value="600-800">600 - 800 JD</option>
+                            <option value="800+">800+ JD</option>
+                        </select>
+                    </div>
+
+                    <div class="col-md-3 mb-2">
+                        <label>Priority</label>
+                        <select id="recPriority" class="form-control">
+                            <option value="">Select...</option>
+                            <option value="performance">Performance</option>
+                            <option value="price">Price</option>
+                            <option value="display">Display</option>
+                        </select>
+                    </div>
+
+                    <div class="col-md-3 mb-2">
+                        <label>Screen Size</label>
+                        <select id="recScreen" class="form-control">
+                            <option value="">Select...</option>
+                            <option value="14">14"</option>
+                            <option value="15.6">15.6"</option>
+                            <option value="16+">16"+</option>
+                        </select>
+                    </div>
+
+                    <div class="col-12 mt-2">
+                        <button id="btnGetRec" class="btn btn-solid">
+                            Get Recommendations
+                        </button>
+                    </div>
+
+                </div>
+            </div>
+        </div>
+    </div>
+
+
+    <div class="row" id="ItemArea"></div>
+
+    <!-- Pagination -->
+    <div class="row mt-4">
+        <div class="col-12 d-flex justify-content-center">
+            <div id="ItemPagination"></div>
+        </div>
+    </div>
+</div>
+
+<!-- Popup Container -->
+<div id="externalLinksContainer"></div>
+
+
+
+
+ @section Scripts {
+
+    <!--Recommendaton js-->
+    <script src="~/Frontend/js/Recommendation.js"></script>
+} 

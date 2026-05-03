@@ -1,0 +1,204 @@
+﻿@model VmHomePage
+
+<!-- header end -->
+<!-- Home slider -->
+<section class="p-0 layout-7">
+    <div class="slide-1 home-slider">
+        @foreach(var slider in Model.lstSliders)
+        {
+            <div>
+                <div class="home text-left">
+                    <img src="~/Uploads/Sliders/@slider.ImageName" alt="" class="bg-img blur-up lazyload">
+                </div>
+            </div>
+        }
+    </div>
+</section>
+<!-- Home slider end -->
+<!-- collection banner -->
+<section class="banner-padding banner-furniture ratio2_1">
+    <div class="container-fluid">
+        <div class="row partition4">
+            @foreach(var category in Model.lstCategories)
+            {
+                <div class="col-lg-3 col-md-6">
+                    <a asp-controller="Items" asp-action="ItemList" asp-route-brand="@category.CategoryName">
+                        <div class="collection-banner p-right text-right">
+                            <div class="img-part">
+                                <img src="~/Uploads/Categories/@category.ImageName"
+                                     class="img-fluid blur-up lazyload bg-img">
+                            </div>
+ 
+                        </div>
+                    </a>
+                </div>
+            }          
+        </div>
+    </div>
+</section>
+<!-- collection banner end -->
+<!-- Paragraph-->
+<div class="title1 section-t-space">
+    <h4>special offer</h4>
+    <h2 class="title-inner1">today's deal</h2>
+</div>
+<div class="container">
+    <div class="row">
+        <div class="col-lg-6 offset-lg-3">
+            <div class="product-para">
+                <p class="text-center">
+                    Enjoy exclusive discounts for a limited time. Don’t miss today’s hottest laptop deals!
+                </p>
+            </div>
+        </div>
+    </div>
+</div>
+<!-- Paragraph end -->
+<!-- Product section -->
+<section class="pt-0 section-b-space ratio_asos">
+    <div class="container">
+        <div class="row game-product grid-products">
+            @foreach(var item in Model.lstTodaysDeal)
+            {
+                <div class="product-box col-xl-2 col-lg-3 col-sm-4 col-6">
+                    @* partial view from Item Box *@
+                    <partial name="ItemBox" model="@item"/>
+                </div>
+            }
+        </div>
+    </div>
+</section>
+<!-- Product section end -->
+<!-- Parallax banner -->
+<section class="p-0">
+    <div class="full-banner parallax text-center p-right">
+        <img src="~/Uploads/Sliders/7.jpg" alt="" class="bg-img blur-up lazyload">
+        <div class="container">
+            <div class="row">
+                <div class="col">
+                    <div class="banner-contain">
+                        <h2>sale</h2>
+                        <h4>special offer</h4> 
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+<!-- Parallax banner end -->
+<!-- product section start -->
+<section class="tools_product bg-title section-b-space">
+    <div class="container">
+        <div class="row multiple-slider">
+            <div class="col-xl-4 col-lg-4 col-md-12">
+                <div class="theme-card">
+                    <h5 class="title-border">Under $20 | Free delivery</h5>
+                    <div class="offer-slider slide-1">
+                        <div>
+                            @foreach(var item in Model.lstFreeDelivery)
+                            {
+                                <div class="media">
+                                    <a asp-controller="Items" asp-action="ItemDetails" asp-route-id="@item.ItemId">
+                                        <img class="img-fluid blur-up lazyload"
+                                             src="~/Uploads/Items/@item.ImageName" alt="">
+                                    </a>
+                                    <div class="media-body align-self-center">
+                                        <div class="rating">
+                                            <i class="fa fa-star"></i>
+                                            <i class="fa fa-star"></i>
+                                            <i class="fa fa-star"></i>
+                                            <i class="fa fa-star"></i>
+                                            <i class="fa fa-star"></i>
+                                        </div>
+                                        <a href="product-page(no-sidebar).html">
+                                            <h6>@item.ItemName</h6>
+                                        </a>
+                                        <h4>
+                                            JD @item.SalesPrice
+                                            <del></del>
+                                            </h4>
+                                    </div>
+                                </div>
+                            }
+                        </div>
+                        <div>
+                             @foreach (var item in Model.lstFreeDelivery)
+                            {
+                                <div class="media">
+                                    <a asp-controller="Items" asp-action="ItemDetails" asp-route-id="@item.ItemId">
+                                        <img class="img-fluid blur-up lazyload"
+                                             src="~/Uploads/Items/@item.ImageName" alt="">
+                                    </a>
+                                    <div class="media-body align-self-center">
+                                        <div class="rating">
+                                            <i class="fa fa-star"></i>
+                                            <i class="fa fa-star"></i>
+                                            <i class="fa fa-star"></i>
+                                            <i class="fa fa-star"></i>
+                                            <i class="fa fa-star"></i>
+                                        </div>
+                                        <a href="product-page(no-sidebar).html">
+                                            <h6>@item.ItemName</h6>
+                                        </a>
+                                        <h4>
+                                            JD @item.SalesPrice
+                                            <del></del>
+                                            </h4>
+                                    </div>
+                                </div>
+                            }
+                        </div> 
+                    </div>
+                </div>
+            </div>
+            <div class="col-xl-8 col-lg-8 col-md-12">
+                <div class="theme-tab">
+                    <div class="bg-title-part">
+                        <a class="title-border"> RECOMMENDATIONS FOR YOU</a>
+                        <ul class="tabs tab-title">
+                            <li class="current">
+                                <a href="tab-4">New Products</a>
+                            </li>
+                            <li class="">
+                                <a href="tab-5">Featured Products</a>
+                            </li>
+                        </ul>
+                    </div>
+                    <div class="tab-content-cls ratio_asos">
+                        <div id="tab-4" class="tab-content active default">
+                            <div class="product-4 game-product product-m no-arrow">
+                                @foreach(var item in Model.lstRecommendedItems)
+                                {
+                                    <div class="product-box">
+                                        <partial name="ItemBox" model="@item" />
+                                    </div>
+                                }
+                                
+                            </div>
+                        </div>
+                        <div id="tab-5" class="tab-content">
+                            <div class="product-4 game-product product-m no-arrow">
+                                @foreach (var item in Model.lstNewItems)
+                                {
+                                    <div class="product-box">
+                                        <partial name="ItemBox" model="@item" />
+                                    </div>
+                                }
+
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="banner-tools">
+                    <a asp-controller="Items" asp-action="ItemDetails" asp-route-id="47">
+                        <img src="~/Uploads/Sliders/9.jpg" class="img-fluid" alt="" />
+                    </a>
+                </div>
+
+            </div>
+        </div>
+    </div>
+</section>
+<!-- product section end -->
+
+
