@@ -279,7 +279,6 @@ dotnet ef database update --startup-project ../LapAdvisor/LapAdvisor.csproj
 | Mohammad Khalaf Mohammad Aldabube | 3220601054 |
 | Ahmad Salameh Mohammad Alhabahbeh | 3220605114 |
 
-**Supervisor:** Dr. Hisham Al-Kharabsheh  
 **University:** World Islamic Sciences and Education University (WISE)  
 **Faculty:** Information Technology  
 
@@ -288,7 +287,3 @@ dotnet ef database update --startup-project ../LapAdvisor/LapAdvisor.csproj
 ## 📄 License
 
 This project was developed as a graduation project for academic purposes.
-
----
-
-*Built with ❤️ in Jordan 🇯🇴*
